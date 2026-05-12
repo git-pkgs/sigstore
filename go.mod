@@ -1,4 +1,4 @@
-module github.com/git-pkgs/sigstore-verifier
+module github.com/git-pkgs/sigstore
 
 go 1.26.3
 

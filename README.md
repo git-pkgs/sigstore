@@ -1,11 +1,11 @@
-# sigstore-verifier
+# sigstore
 
 A thin `sigstore-go` wrapper that validates a sigstore bundle against the live (or cached) Sigstore TUF trust root. Cross-ecosystem by design: handles any `(digestAlg, digest)` pair, so npm tarball (`sha512`), GitHub artifact (`sha256`), PyPI distribution, Maven Central, and Cargo package attestations all use the same code path.
 
 ## Install
 
 ```
-go get github.com/git-pkgs/sigstore-verifier
+go get github.com/git-pkgs/sigstore
 ```
 
 ## Usage
@@ -16,13 +16,13 @@ import (
 
     "github.com/sigstore/sigstore-go/pkg/root"
 
-    "github.com/git-pkgs/sigstore-verifier"
+    "github.com/git-pkgs/sigstore"
 )
 
 tr, err := root.FetchTrustedRoot() // or FetchTrustedRootWithOptions for a local cache
 if err != nil { return err }
 
-v := sigstoreverifier.New(tr)
+v := sigstore.New(tr)
 digest := sha512.Sum512(artifactBytes)
 err = v.VerifyBundle(ctx, bundleBytes, "sha512", digest[:])
 ```
