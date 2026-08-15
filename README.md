@@ -35,8 +35,8 @@ err = v.VerifyBundle(ctx, bundleBytes, "sha512", digest[:])
 - the in-toto subject digest matches the supplied `(digestAlg, digest)`.
 
 Use `VerifyBundleDetailed` when the caller also needs the certificate identity
-and OIDC issuer, verified Rekor ID, URI, and integrated time, in-toto subjects,
-or predicate data:
+and OIDC issuer, verified hex-encoded Rekor log key ID, URI, and integrated
+time, in-toto subjects, or predicate data:
 
 ```go
 result, err := v.VerifyBundleDetailed(ctx, bundleBytes, "sha512", digest[:])

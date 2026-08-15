@@ -51,7 +51,8 @@ type VerificationResult struct {
 }
 
 // TransparencyLog identifies a log and the verified time at which it
-// integrated the bundle entry. ID is the log's hex-encoded key ID.
+// integrated the bundle entry. ID is the log's hex-encoded key ID when it can
+// be uniquely matched; otherwise ID is empty.
 type TransparencyLog struct {
 	ID             string
 	URI            string
