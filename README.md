@@ -34,6 +34,20 @@ err = v.VerifyBundle(ctx, bundleBytes, "sha512", digest[:])
 - the DSSE envelope signature matches the cert,
 - the in-toto subject digest matches the supplied `(digestAlg, digest)`.
 
+Use `VerifyBundleDetailed` when the caller also needs the certificate identity
+and OIDC issuer, verified Rekor ID, URI, and integrated time, in-toto subjects,
+or predicate data:
+
+```go
+result, err := v.VerifyBundleDetailed(ctx, bundleBytes, "sha512", digest[:])
+```
+
+`result.Statement` contains the exact decoded DSSE payload and
+`result.Predicate` contains its raw JSON predicate. These fields are returned
+only after verification succeeds. The caller is responsible for deciding
+whether `result.CertificateIdentity` and `result.CertificateIssuer` are
+authorized for its use case.
+
 ## Pluggable verifier pattern
 
 Consumers typically declare a one-method interface so other verifiers (witness, SBOMit, plain in-toto) can swap in:
