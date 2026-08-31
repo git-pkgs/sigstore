@@ -1,6 +1,8 @@
 module github.com/git-pkgs/sigstore
 
-go 1.26.3
+go 1.26
+
+toolchain go1.26.7
 
 require (
 	github.com/sigstore/protobuf-specs v0.5.2
