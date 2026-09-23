@@ -68,4 +68,4 @@ For identity-field extraction without verification, see [`github.com/git-pkgs/at
 
 ## License
 
-MIT
+[MIT](LICENSE).
